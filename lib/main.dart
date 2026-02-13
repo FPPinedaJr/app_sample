@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'features/splash_feature/splash_screen.dart';
 import 'features/login_feature/login_screen.dart';
+import 'features/register_feature/register_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,11 +16,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Todo App Sample',
       routes: {
-        "/": (context) => const LoginScreen(), // FOR DEVELOPMENT ONLY
+        // "/": (context) => const RegisterScreen(), // FOR DEVELOPMENT ONLY
 
 
-        // "/": (context) => const SplashScreen(),
-        // "/login": (context) => const LoginScreen(),
+        "/": (context) => const SplashScreen(),
+        "/login": (context) => const LoginScreen(),
+        "/register": (context) => const RegisterScreen(),
       },
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
