@@ -38,7 +38,8 @@ class SplashScreen extends StatelessWidget {
             width: 360,
             child: ElevatedButton(
               onPressed: () {
-                print("Button Pressed!");
+                // print("Button Pressed!");
+                Navigator.pushNamed(context, '/login');
               },
               style: ButtonStyle(
                 backgroundColor: WidgetStateProperty.all(Color(0xDD50C2C9)),
