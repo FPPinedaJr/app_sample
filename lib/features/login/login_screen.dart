@@ -1,5 +1,6 @@
 import 'package:app_example/core/widgets/app_elevated_button.dart';
 import 'package:app_example/core/widgets/app_text_form_field.dart';
+import 'package:app_example/core/widgets/auth_question.dart';
 import 'package:app_example/features/login/login_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Align(
             alignment: Alignment.topLeft,
-            // child: Image.asset('assets/shape.png'),
+            child: Image.asset('assets/shape.png'),
           ),
           Text(
             "Welcome Back",
@@ -62,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Center(
-            // child: Image.asset('assets/back_to_school.png')
+            child: Image.asset('assets/back_to_school.png')
           ),
           Spacer(),
           AppTextFormField(
@@ -88,24 +89,11 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Spacer(),
           AppElevatedButton(text: "Login", onPressed: _handleLogin),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Don't have an account?"),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-                child: Text(
-                  "Sign Up",
-                  style: GoogleFonts.poppins(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w300,
-                    color: Color(0xDD50C2C9),
-                  ),
-                ),
-              ),
-            ],
+          // Replaced the massive Row with this single line
+          AuthQuestion(
+            title: "Don't have an account?",
+            actionText: "Sign Up",
+            onPressed: () => Navigator.pushNamed(context, '/register'),
           ),
           SizedBox(height: 20),
         ],

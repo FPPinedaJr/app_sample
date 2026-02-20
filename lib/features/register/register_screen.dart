@@ -1,5 +1,6 @@
 import 'package:app_example/core/widgets/app_elevated_button.dart';
 import 'package:app_example/core/widgets/app_text_form_field.dart';
+import 'package:app_example/core/widgets/auth_question.dart';
 import 'package:app_example/features/register/register_logic.dart'; // Import the logic file
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -53,7 +54,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         children: [
           Align(
             alignment: Alignment.topLeft,
-            // child: Image.asset('assets/shape.png'),
+            child: Image.asset('assets/shape.png'),
           ),
           Text(
             "Welcome to Onboard",
@@ -97,24 +97,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           // Use the new _handleRegister method here
           AppElevatedButton(text: "Register", onPressed: _handleRegister),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Already have an account?"),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  "Sign In",
-                  style: GoogleFonts.poppins(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w300,
-                    color: Color(0xDD50C2C9),
-                  ),
-                ),
-              ),
-            ],
+          AuthQuestion(
+            title: "Already have an account?",
+            actionText: "Sign In",
+            onPressed: () => Navigator.pop(context),
           ),
           SizedBox(height: 20),
         ],

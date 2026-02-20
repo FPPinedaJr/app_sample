@@ -16,18 +16,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Todo App Sample',
+      debugShowCheckedModeBanner: false,
       routes: {
         // "/": (context) => const RegisterScreen(), // FOR DEVELOPMENT ONLY
-
-
         "/": (context) => const SplashScreen(),
         "/login": (context) => const LoginScreen(),
         "/register": (context) => const RegisterScreen(),
         "/todo": (context) => const TodoScreen(),
       },
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
     );
   }
 }

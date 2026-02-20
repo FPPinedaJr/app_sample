@@ -1,4 +1,5 @@
 import 'package:app_example/core/session_manager.dart';
+import 'package:app_example/core/widgets/todo_item_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:app_example/core/database/app_database.dart';
 import 'package:drift/drift.dart' as drift;
@@ -151,23 +152,10 @@ class _TodoScreenState extends State<TodoScreen> {
                   itemBuilder: (context, index) {
                     final todo = todos[index];
 
-                    return ListTile(
-                      leading: Checkbox(
-                        value: todo.isCompleted,
-                        onChanged: (_) => _toggleTodo(todo),
-                      ),
-                      title: Text(
-                        todo.title,
-                        style: TextStyle(
-                          decoration: todo.isCompleted
-                              ? TextDecoration.lineThrough
-                              : TextDecoration.none,
-                        ),
-                      ),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.delete, color: Colors.redAccent),
-                        onPressed: () => _deleteTodo(todo),
-                      ),
+                    return TodoItemTile(
+                      todo: todo,
+                      onToggle: (_) => _toggleTodo(todo),
+                      onDelete: () => _deleteTodo(todo),
                     );
                   },
                 );
