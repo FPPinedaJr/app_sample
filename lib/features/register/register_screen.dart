@@ -1,10 +1,10 @@
+import 'package:app_example/core/utils/app_elevated_button.dart';
+import 'package:app_example/core/utils/app_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../app/core/utils/shared/app_elevated_button.dart';
-import '../../app/core/utils/shared/app_text_form_field.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
             child: Image.asset('assets/shape.png'),
           ),
           Text(
-            "Welcome Back",
+            "Welcome to Onboard",
             style: GoogleFonts.poppins(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -26,44 +26,29 @@ class LoginScreen extends StatelessWidget {
           ),
 
           // Image
-          // Spacer(),
-          Center(child: Image.asset('assets/back_to_school.png')),
-          Spacer(),
 
           // Forms
+          Spacer(),
+          AppTextFormField(hintText: "Enter your Fullname"),
           AppTextFormField(hintText: "Enter your Email"),
-          AppTextFormField(hintText: "Enter your Password"),
-
-          // Forget Password
-          Spacer(),
-          TextButton(
-            onPressed: () {
-              print("forget password Pressed");
-            },
-            child: Text(
-              "Forget Password?",
-              style: GoogleFonts.poppins(
-                fontSize: 13,
-                fontWeight: FontWeight.w400,
-                color: Color(0xDD50C2C9),
-              ),
-            ),
-          ),
+          AppTextFormField(hintText: "Enter Password"),
+          AppTextFormField(hintText: "Confirm Passoword"),
           Spacer(),
 
-          // Login Button
-          AppElevatedButton(text: "Login"),
+          // Register Button
+          AppElevatedButton(text: "Register"),
 
+          // already have an account
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Don't have an account?"),
+              Text("Already have an account?"),
               TextButton(
                 onPressed: () {
-                   Navigator.pushNamed(context, '/register');
+                  Navigator.pop(context, '/register');
                 },
                 child: Text(
-                  "Sign Up",
+                  "Sign In",
                   style: GoogleFonts.poppins(
                     fontSize: 13,
                     fontWeight: FontWeight.w300,

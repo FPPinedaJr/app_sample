@@ -1,7 +1,7 @@
+import 'package:app_example/features/login/login_screen.dart';
+import 'package:app_example/features/register/register_screen.dart';
+import 'package:app_example/features/splashscreen/splashscreen.dart';
 import 'package:flutter/material.dart';
-import 'features/splash_feature/splash_screen.dart';
-import 'features/login_feature/login_screen.dart';
-import 'features/register_feature/register_screen.dart';
 
 void main() {
   runApp(const MyApp());
