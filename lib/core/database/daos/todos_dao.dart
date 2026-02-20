@@ -8,8 +8,12 @@ part 'todos_dao.g.dart';
 class TodosDao extends DatabaseAccessor<AppDatabase> with _$TodosDaoMixin {
   TodosDao(super.db);
 
-  // READ: Watch all todos as a Stream. The UI will automatically rebuild when this changes.
-  Stream<List<Todo>> watchAllTodos() => select(todos).watch();
+  // READ: Watch only the todos belonging to the specific user
+  Stream<List<Todo>> watchTodosForUser(int currentUserId) {
+    return (select(
+      todos,
+    )..where((t) => t.userId.equals(currentUserId))).watch();
+  }
 
   // CREATE: Insert a new todo
   Future<int> insertTodo(TodosCompanion todo) => into(todos).insert(todo);

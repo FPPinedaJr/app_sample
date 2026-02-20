@@ -19,7 +19,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(driftDatabase(name: 'app_db'));
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 }
 
 final appDb = AppDatabase();

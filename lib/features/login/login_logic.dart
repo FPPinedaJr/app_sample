@@ -1,4 +1,5 @@
-import 'package:app_example/core/database/app_database.dart'; 
+import 'package:app_example/core/database/app_database.dart';
+import 'package:app_example/core/session_manager.dart'; 
 
 class LoginLogic {
   Future<String?> loginUser({
@@ -19,6 +20,8 @@ class LoginLogic {
       if (user.password != password) {
         return 'Incorrect password.';
       }
+
+      await sessionManager.saveSession(user.id);
 
       return null;
     } catch (e) {

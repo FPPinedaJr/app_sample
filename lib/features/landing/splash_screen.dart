@@ -1,11 +1,47 @@
+import 'package:app_example/core/session_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  // 1. Add a loading state flag
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkSession();
+  }
+
+  Future<void> _checkSession() async {
+    // 2. No more artificial delay. Check the session immediately.
+    final loggedIn = await sessionManager.isLoggedIn();
+
+    if (!mounted) return;
+
+    if (loggedIn) {
+      // 3. If logged in, wipe this screen and go straight to the app
+      Navigator.pushReplacementNamed(context, '/todo');
+    } else {
+      // 4. If NOT logged in, hide the loading spinner and show your UI
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+     @override
   Widget build(BuildContext context) {
+    if (_isLoading) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
     return Scaffold(
       body: Column(
         spacing: 20,
@@ -63,5 +99,4 @@ class SplashScreen extends StatelessWidget {
         ],
       ),
     );
-  }
-}
+  }}
