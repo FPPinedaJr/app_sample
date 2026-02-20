@@ -7,7 +7,7 @@ part 'users_dao.g.dart'; // Drift will generate this specific file
 // Tell Drift this DAO interacts with the Users table
 @DriftAccessor(tables: [Users])
 class UsersDao extends DatabaseAccessor<AppDatabase> with _$UsersDaoMixin {
-  UsersDao(AppDatabase db) : super(db);
+  UsersDao(super.db);
 
   // Move your register method here
   Future<int> registerUser(UsersCompanion user) {
@@ -19,3 +19,5 @@ class UsersDao extends DatabaseAccessor<AppDatabase> with _$UsersDaoMixin {
     return (select(users)..where((t) => t.email.equals(email))).getSingleOrNull();
   }
 }
+
+

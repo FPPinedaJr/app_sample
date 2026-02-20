@@ -1,10 +1,48 @@
 import 'package:app_example/core/widgets/app_elevated_button.dart';
 import 'package:app_example/core/widgets/app_text_form_field.dart';
+import 'package:app_example/features/login/login_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _loginLogic = LoginLogic();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _handleLogin() async {
+    final errorMessage = await _loginLogic.loginUser(
+      email: _emailController.text.trim(),
+      password: _passwordController.text,
+    );
+
+    if (!mounted) return;
+
+    if (errorMessage == null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Login Successful!')));
+
+      // Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(errorMessage)));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +53,7 @@ class LoginScreen extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.topLeft,
-            child: Image.asset('assets/shape.png'),
+            // child: Image.asset('assets/shape.png'),
           ),
           Text(
             "Welcome Back",
@@ -24,22 +62,22 @@ class LoginScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-
-          // Image
-          // Spacer(),
-          Center(child: Image.asset('assets/back_to_school.png')),
+          Center(
+            // child: Image.asset('assets/back_to_school.png')
+          ),
           Spacer(),
-
-          // Forms
-          AppTextFormField(hintText: "Enter your Email"),
-          AppTextFormField(hintText: "Enter your Password"),
-
-          // Forget Password
+          AppTextFormField(
+            hintText: "Enter your Email",
+            controller: _emailController,
+          ),
+          AppTextFormField(
+            hintText: "Enter your Password",
+            controller: _passwordController,
+            // obscureText: true,
+          ),
           Spacer(),
           TextButton(
-            onPressed: () {
-              print("forget password Pressed");
-            },
+            onPressed: () {},
             child: Text(
               "Forget Password?",
               style: GoogleFonts.poppins(
@@ -50,17 +88,14 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           Spacer(),
-
-          // Login Button
-          AppElevatedButton(text: "Login"),
-
+          AppElevatedButton(text: "Login", onPressed: _handleLogin),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Don't have an account?"),
               TextButton(
                 onPressed: () {
-                   Navigator.pushNamed(context, '/register');
+                  Navigator.pushNamed(context, '/register');
                 },
                 child: Text(
                   "Sign Up",
