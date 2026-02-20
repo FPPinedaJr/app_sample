@@ -1,6 +1,6 @@
 import 'package:app_example/features/login/login_screen.dart';
 import 'package:app_example/features/register/register_screen.dart';
-import 'package:app_example/features/splashscreen/splash_screen.dart';
+import 'package:app_example/features/landing/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

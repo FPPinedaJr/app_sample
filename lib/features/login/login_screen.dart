@@ -1,5 +1,5 @@
-import 'package:app_example/core/utils/app_elevated_button.dart';
-import 'package:app_example/core/utils/app_text_form_field.dart';
+import 'package:app_example/core/widgets/app_elevated_button.dart';
+import 'package:app_example/core/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

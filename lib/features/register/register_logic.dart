@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart' as drift;
-import 'package:app_example/core/services/app_database.dart'; // Make sure this path points to your app_database.dart
+import 'package:app_example/core/database/app_database.dart'; 
 
 class RegisterLogic {
   Future<String?> registerUser({
