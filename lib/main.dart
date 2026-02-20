@@ -1,6 +1,7 @@
 import 'package:app_example/features/login/login_screen.dart';
 import 'package:app_example/features/register/register_screen.dart';
 import 'package:app_example/features/landing/splash_screen.dart';
+import 'package:app_example/features/todo/todo_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => const SplashScreen(),
         "/login": (context) => const LoginScreen(),
         "/register": (context) => const RegisterScreen(),
+        "/todo": (context) => const TodoScreen(),
       },
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
